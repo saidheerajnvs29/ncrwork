@@ -2,16 +2,17 @@
 #include<math.h>
 int main()
 {
-	char binary[20];
+	int binary,val=0,i=0,r;;
 	printf("enter the binary value");
-	scanf("%s",binary);
-	int val=0,i;
-	for(i=0;i<strlen(binary);i++)
+	scanf("%d",&binary);
+	while(binary!=0)
 	{
-		if(binary[i]==1)
+		if((binary%10)==1)
 		{
-			val+=pow(2,strlen(binary)-1-i);
-		}	 	 
+			val+=pow(2,i);
+		}
+		binary/=10;
+		i++;
 	}
 	printf("the entered value is %d\n",val);
 	return 0;
