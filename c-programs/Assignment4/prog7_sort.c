@@ -4,11 +4,7 @@ int main()
 {
 	int n,i,j,k;
 	char **s,ch[100];
-	char ch1[100]="mad";
-	char ch2[100]="uma";
-	printf("%d",strcmp(ch1,ch2));
-	strcpy(ch1,ch2);
-	printf("%s\n",ch1);
+	char ch1[100];
 	printf("enter the number of strings\n");
 	scanf("%d",&n);
 	s=(char **)malloc(n*sizeof(char *));
