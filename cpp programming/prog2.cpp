@@ -1,63 +1,60 @@
 #include<iostream>
 using namespace std;
-class CollegeCourse
+class student
 {
-	string name,grade;
-	int marks1,marks2,marks3;
+	string name;
+	char grade;
+	int m1,m2,m3;
 	public:
-	void set_data(string n,string g,int m1,int m2,int m3)
+	void set_data(string n,int marks1,int marks2,int marks3)
 	{
 		name=n;
-		grade=g;
-		marks1=m1;
-		marks2=m2;
-		marks3=m3;
+		m1=marks1;
+		m2=marks2;
+		m3=marks3;
 	}
-	float calculate_avg()
+	float calculateAvg()
 	{
-		float avg=(marks1+marks2+marks3)/(float)3;
-		return avg;
+		float res=(m1+m2+m3)/(float)3;
+		return res;
 	}
-	void compute_grade()
+	void computeGrade()
 	{
-		float avg=(marks1+marks2+marks3)/(float)3;
-		if(avg>60)
-		{
-			grade="1";
+		float res=(m1+m2+m3)/(float)3;
+		if(res>60)
+		{	
+			grade='A';
 		}
-		else if(avg>50 && avg<=60)
+		else if(res>50 && res<=60)
 		{
-			grade="2";
+			grade='B';
 		}
-		else if(avg>40 && avg<=50)
+		else if(res>40 && res<=50)
 		{
-			grade="3";
+			grade='C';
 		}
 		else
 		{
-			grade="fail";
+			grade='F';
 		}
 	}
 	void display()
 	{
-		cout<<"name  is "<<name<<"\ngrade is "<<grade<<"\nsubject1 marks is "<<marks1<<"\nsubject2 marks is "<<marks2<<"\nsubject3 marks is "<<marks3<<endl;
+		cout<<"the student name is "<<name<<endl;
+		cout<<"the grade is "<<grade<<endl;
+		cout<<"subject 1= "<<m1<<endl;
+		cout<<"subject 2= "<<m2<<endl;
+		cout<<"subject 3= "<<m3<<endl;
 	}
 	
 };
 int main()
 {
-	CollegeCourse c1;
-	int m1,m2,m3;
-	cout<<"enter the marks of first subject\n";
-	cin>>m1;
-	cout<<"enter the marks of second subject\n";
-	cin>>m2;
-	cout<<"enter the marks od third suject\n";
-	cin>>m3;
-	c1.set_data("dheeraj","NA",m1,m2,m3);
-	cout<<"the avg of students marks is "<<c1.calculate_avg()<<endl;
-	c1.compute_grade();
-	c1.display();
+	student s;
+	s.set_data("dheeraj",40,50,60);
+	cout<<"the average of student is "<<s.calculateAvg()<<endl;
+	s.computeGrade();
+	s.display();
 	return 0;
 }
 
