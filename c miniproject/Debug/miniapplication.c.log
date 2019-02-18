@@ -1,0 +1,3 @@
+﻿  miniapplication.c
+c:\users\dheer\source\repos\miniapplication.c\miniapplication.c\miniapplication.c(69): warning C4013: 'system' undefined; assuming extern returning int
+  miniapplication.c.vcxproj -> C:\Users\dheer\source\repos\miniapplication.c\Debug\miniapplication.c.exe
