@@ -5,6 +5,7 @@ typedef struct jode
 	int data;
 	struct jode *next;
 }Node;
+void print(Node *);
 class LL
 {
 	Node *start;
@@ -176,7 +177,7 @@ class LL
 			cout<<"no list\n";
 		}
 	}
-	void traverse_forward()
+	void traverse()
 	{
 		Node *curr;
 	/*	  curr=start;*/
@@ -186,8 +187,51 @@ class LL
 		}
 		cout<<endl;
 	}
+	void traverse_back()
+	{
+		print(start);
+		cout<<endl;
+	}
+	void reverse()
+	{
+		Node *rev=NULL;
+		Node *temp,*curr=start;
+		while(curr!=NULL)
+		{
+			temp=curr;
+			curr=curr->next;
+			if(rev!=NULL)
+			{
+				temp->next=rev;
+				rev=temp;
+			}
+			else
+			{
+				temp->next=NULL;
+				rev=temp;
+			}	 
+		}
+		start=rev;
+	}
+	~LL()
+	{
+		Node *temp,*curr=start;
+		while(start!=NULL)
+		{
+			temp=start;
+			start=start->next;
+			delete temp;
+		}
+	}
 	
 };
+void print(Node *start)
+{
+	if(start==NULL)
+		return;
+	print(start->next);
+	cout<<start->data<<" ";
+}
 int main()
 {
 	LL node;
@@ -211,6 +255,8 @@ int main()
 	node.insert_before(7,13);
 	node.traverse();
 	node.insert_last(9);
+		node.reverse();
+	node.traverse();
 	node.traverse();
 	x=node.delete_last();
 	if(x<0)
@@ -227,6 +273,8 @@ int main()
 	node.traverse();
 	node.delete_spec(8);
 	node.traverse();
+	node.traverse_back();
+
 	return 0;
 }
 
