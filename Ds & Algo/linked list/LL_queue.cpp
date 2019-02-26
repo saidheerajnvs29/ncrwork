@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-class stack;
+class queue;
 typedef struct jode 
 {
 	int data;
@@ -27,7 +27,28 @@ class LL
 		}
 		else temp->next=NULL;
 		start=temp;
-	}	
+	}
+	void insert_last(int n)
+	{
+		Node *curr,*temp;
+		temp=new Node;
+		temp->data=n;
+		temp->next=NULL;
+		if(start!=NULL)
+		{
+			curr=start;	   
+			while(curr->next!=NULL)
+			{
+				curr=curr->next;	
+			}
+			curr->next=temp;
+		}
+		else
+		{
+			start=temp;	   
+		}
+		
+	}	  
 	int delete_begin()
 	{
 		int x=-1;
@@ -85,9 +106,9 @@ class LL
 			delete temp;
 		}
 	}*/
-	friend class stack;	   
+	friend class queue;	   
 };
-class stack
+class queue
 {
 	LL list;
 	public:
@@ -95,17 +116,13 @@ class stack
 	{
 		list=NULL;
 	}*/
-	void push(int n)
+	void enque(int n)
 	{
-		list.insert_begin(n);
+		list.insert_last(n);
 	}
-	int pop()
+	int deque()
 	{
 		return list.delete_begin();
-	}
-	int peek()
-	{
-		return list.start->data;
 	}
 	void display()
 	{
@@ -114,16 +131,35 @@ class stack
 };
 int main()
 {
-	stack s;
-	s.push(3);
-	s.push(7);
-	s.push(9);
-	cout<<s.pop()<<endl;
-	cout<<s.peek()<<endl;
-	s.push(12);
-	s.push(14);
-	cout<<s.peek()<<endl;
-	s.display();
+	queue q;
+	while(1)
+	{
+		cout<<"enter\n1 for enque\n2 for deque\n3 for exit\n";
+		int n;
+		cin>>n;
+		switch(n)
+		{
+			case 1:
+				cout<<"enter the element\n";
+				int val;
+				cin>>val;
+				q.enque(val);
+				q.display();
+				cout<<"\n\n";
+				break;
+			case 2:
+				cout<<"the removed element is "<<q.deque()<<endl;
+				q.display();
+				cout<<"\n\n";
+				break;
+			case 3:
+				cout<<"exiting............................................................................................................\n";
+				exit(0);
+			default:
+				cout<<"enter the correct value\n";
+				break;
+		}
+	}
 	return 0;
 }
 
